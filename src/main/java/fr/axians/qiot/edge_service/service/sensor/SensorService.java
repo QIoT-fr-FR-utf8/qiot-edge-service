@@ -19,5 +19,6 @@ public interface SensorService {
     @GET
     @Path("/{type}")
     @Produces("application/json")
-    Set<SensorClient> getByType(@PathParam String type);
+    public GasSensor getByType(@PathParam String type);
+    //Set<SensorClient> getByType(@PathParam String type);
 }
