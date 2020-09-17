@@ -1,4 +1,4 @@
-package fr.axians.qiot.edge_service;
+package fr.axians.qiot.edge_service.rest;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -11,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
+import fr.axians.qiot.edge_service.service;
 
 @Path("/register")
 @ApplicationScoped
