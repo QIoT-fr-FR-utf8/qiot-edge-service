@@ -7,9 +7,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import com.redhat.qiot.datahub.endpoint.service.DataStoreService;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import org.jcp.xml.dsig.internal.dom.DOMX509IssuerSerial;
 
 import sun.tools.serialver.resources.serialver;
@@ -18,7 +16,7 @@ import sun.tools.serialver.resources.serialver;
 @ApplicationScoped
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.TEXT_PLAIN)
-public class RegisterResource {
+public class Registration {
 
 @Inject
 RegistrationService regService;
