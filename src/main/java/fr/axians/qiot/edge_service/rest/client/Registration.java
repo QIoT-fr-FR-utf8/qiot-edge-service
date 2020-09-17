@@ -20,7 +20,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 public class Registration {
 
 @Inject
-RegistrationService regService;
+//RegistrationService regService;
 
 String serial = "36c2a3079e97428fa514f2beb0fd4e6a";
 String name = "FRutf8";
