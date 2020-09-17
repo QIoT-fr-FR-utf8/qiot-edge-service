@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
+import fr.axians.qiot.edge_service.service.RegistrationService;
 
 @Path("/register")
 @ApplicationScoped
@@ -20,7 +21,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 public class Registration {
 
 @Inject
-//RegistrationService regService;
+RegistrationService regService;
 
 String serial = "36c2a3079e97428fa514f2beb0fd4e6a";
 String name = "FRutf8";
@@ -29,12 +30,12 @@ double latitude = 48.8;
 
     @PUT
     @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
-    void register(@PathParam("serial") String serial,
+    public int register(@PathParam("serial") String serial,
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
 
-        //int returnint = regService.register(serial, name, longitude, latitude);
-        //return returnint;
+        int returnint = regService.register(serial, name, longitude, latitude);
+        return returnint;
     }
 }
