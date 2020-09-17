@@ -27,4 +27,5 @@ public class SensorResource {
     public Set<SensorClient> type(@PathParam String type) {
         return sensorService.getByType(type);
     }
+
 }
