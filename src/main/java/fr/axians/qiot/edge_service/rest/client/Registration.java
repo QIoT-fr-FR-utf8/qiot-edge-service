@@ -35,7 +35,7 @@ double latitude = 48.8;
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
 
-        int returnint = regService.register(serial, name, longitude, latitude);
-        return returnint;
+        //int returnint = regService.register(serial, name, longitude, latitude);
+        //return returnint;
     }
 }
