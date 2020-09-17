@@ -25,8 +25,8 @@ RegistrationService regService;
 
 String serial = "36c2a3079e97428fa514f2beb0fd4e6a";
 String name = "FRutf8";
-double longitude = "2.3";
-double latitude = "48.8";
+double longitude = 2.3;
+double latitude = 48.8;
 
     @PUT
     @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
