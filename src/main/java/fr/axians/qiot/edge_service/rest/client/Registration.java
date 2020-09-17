@@ -30,7 +30,7 @@ double latitude = 48.8;
 
     @PUT
     @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
-    public int register(@PathParam("serial") String serial,
+    void register(@PathParam("serial") String serial,
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
