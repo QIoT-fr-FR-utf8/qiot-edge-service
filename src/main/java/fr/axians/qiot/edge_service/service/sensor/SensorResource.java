@@ -14,22 +14,20 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-import fr.axians.qiot.edge_service.service.sensor.GasSensor.Gas;
 import io.smallrye.mutiny.Uni;
 
 @Path("/sensor")
 public class SensorResource {
 
+    @Inject
+    @RestClient
+    SensorService sensorService;
+
     @GET
     @Path("/gas")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GasResult> Gas() {
-    //    return List<Gas> gas();
-        return SensorService;
-            //.collect(Collectors.toList());
+    public Set<Result.GasResult> name(@PathParam String name) {
+        return sensorService.getGasResults();
     }
-    /*public Set<SensorClient> type(@PathParam String type) {
-        return sensorService.getByType(type);
-    }*/
 
 }
