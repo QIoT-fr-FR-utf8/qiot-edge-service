@@ -2,7 +2,9 @@ package fr.axians.qiot.edge_service.service.sensor;
 
 import java.util.List;
 
-public class GazResult {
+import fr.axians.qiot.edge_service.service.sensor.GasSensor.Gas;
+
+public class GasResult {
 
     private String instant;
     private Double nh3;
@@ -25,19 +27,19 @@ public class GazResult {
         return this.reducing;
     }
 
-    private GazResult(String instant, Double nh3, Double oxidising, Double reducing) {
+    private GasResult(String instant, Double nh3, Double oxidising, Double reducing) {
         this.instant = instant;
         this.nh3 = nh3;
         this.oxidising = oxidising;
         this.reducing = reducing;
     }
     
-    public static GazResult of(Gaz gaz, GazSensor gazsensor) {
-        return new GazResult(
-            gaz.instant,
-            gaz.nh3,
-            gaz.oxidising,
-            gaz.reducing);
+    public static GasResult of(GasSensor gassensor, Gas gas) {
+        return new GasResult(
+            gas.getInstant(),
+            gas.getNh3(),
+            gas.getOxidising(),
+            gas.getReducing());
     }
 
 }
