@@ -8,6 +8,7 @@ import fr.axians.qiot.edge_service.rest.client.Station;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import java.util.Set;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
