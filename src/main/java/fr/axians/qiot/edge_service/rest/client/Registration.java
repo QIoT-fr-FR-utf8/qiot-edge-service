@@ -1,22 +1,14 @@
 package fr.axians.qiot.edge_service.rest.client;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
 import javax.ws.rs.GET;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
-import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-import java.util.Set;
 
-import fr.axians.qiot.edge_service.rest.client.Station;
 import fr.axians.qiot.edge_service.service.RegistrationService;
 
 
@@ -46,7 +38,7 @@ public class Registration {
             st.longitude = 2.3;
             st.latitude = 48.8;
 
-            st.id = regService.getByStations(st.serial, st.name, st.longitude, st.latitude);
+            st.id = regService.getStation(st.serial, st.name, st.longitude, st.latitude);
 
             return st.id;
     }
