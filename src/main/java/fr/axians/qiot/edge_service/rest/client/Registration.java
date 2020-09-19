@@ -24,7 +24,7 @@ RegistrationService regService;
     @PUT
     @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Set<station> register(@PathParam("serial") String serial,
+    public Set<Station> register(@PathParam("serial") String serial,
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {

@@ -20,7 +20,7 @@ public interface RegistrationService {
     @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
-    Set<station>  getByRegister(@PathParam("serial") String serial,
+    Set<Station>  getByRegister(@PathParam("serial") String serial,
     @PathParam("name") String name,
     @PathParam("longitude") double longitude,
     @PathParam("latitude") double latitude);
