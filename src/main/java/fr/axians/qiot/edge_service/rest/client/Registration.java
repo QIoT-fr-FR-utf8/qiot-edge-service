@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import java.util.Set;
 
+import fr.axians.qiot.edge_service.rest.client.Station;
 import fr.axians.qiot.edge_service.service.RegistrationService;
 
 @Path("/register")
