@@ -31,7 +31,6 @@ public class Registration {
     @RestClient
     RegistrationService regService;
 
-
     @GET
     public int register(@PathParam("serial") String serial,
             @PathParam("name") String name,
@@ -45,13 +44,13 @@ public class Registration {
             st.setLongitude(2.3);
             st.setLatitude(48.8);
 
-            /*Retrieve stationId and activate the station */
+            /* Retrieve stationId and activate the station */
             int stationId;
             stationId = regService.regStation(st.getSerial(), st.getName(), st.getLongitude(), st.getLongitude());
             st.setId(stationId);
             st.setActive(true);
 
-            /*Writing station object in file*/
+            /* Writing station object in file */
             try {
                 FileOutputStream f = new FileOutputStream(new File("station.txt"));
                 ObjectOutputStream o = new ObjectOutputStream(f);
@@ -64,7 +63,7 @@ public class Registration {
                 System.out.println(e);
             }
 
-            /*Return the stationId of this station*/
+            /* Return the stationId of this station */
             return st.getId();
     }
 }

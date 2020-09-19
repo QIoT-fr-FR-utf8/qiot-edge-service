@@ -1,5 +1,6 @@
 package fr.axians.qiot.edge_service.rest.client;
 
+/* Main Import */
 import java.io.Serializable;
 
 public class Station implements Serializable  {
