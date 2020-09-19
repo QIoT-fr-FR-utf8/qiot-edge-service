@@ -1,9 +1,24 @@
 package fr.axians.qiot.edge_service.service;
-import javax.enterprise.context.ApplicationScoped;
 
-@ApplicationScoped
+import javax.enterprise.context.ApplicationScoped;
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
+import javax.ws.rs.core.MediaType;
+
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import java.util.Set;
+
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+@RegisterRestClient
 public interface RegistrationService {
 
-    int register(String serial, String name, double longitude, double latitude);
-
+    @PUT
+    @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.TEXT_PLAIN)
+    Set<stationID>  getByRegister(@PathParam("serial") String serial,
+    @PathParam("name") String name,
+    @PathParam("longitude") double longitude,
+    @PathParam("latitude") double latitude);
 }
