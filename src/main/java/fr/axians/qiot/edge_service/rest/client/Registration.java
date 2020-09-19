@@ -33,9 +33,7 @@ public class Registration {
     @RestClient
     RegistrationService regService;
 
-    @PUT
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.TEXT_PLAIN)
+    @GET
     public Set<Station> register(@PathParam("serial") String serial,
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
