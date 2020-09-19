@@ -13,12 +13,12 @@ import java.util.Set;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-
+@Path("/v1")
 @RegisterRestClient
 public interface RegistrationService {
 
     @PUT
-    @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
+    @Path("/register/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
     Set<Station>  getByRegister(@PathParam("serial") String serial,

@@ -24,8 +24,8 @@ public class Registration {
     @RestClient
     RegistrationService regService;
 
-    @PUT
-    @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
+    @GET
+    @Path("/register")
     @Produces(MediaType.TEXT_PLAIN)
     public Set<Station> register(@PathParam("serial") String serial,
             @PathParam("name") String name,
