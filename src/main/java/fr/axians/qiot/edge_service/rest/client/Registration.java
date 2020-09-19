@@ -11,6 +11,14 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import fr.axians.qiot.edge_service.service.RegistrationService;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.TEXT_PLAIN)
@@ -36,6 +44,19 @@ public class Registration {
             stationId = regService.regStation(st.getSerial(), st.getName(), st.getLongitude(), st.getLongitude());
             st.setId(stationId);
             st.setActive(true);
+
+            /*Writing station object in file*/
+            try {
+                FileOutputStream f = new FileOutputStream(new File("station.txt"));
+                ObjectOutputStream o = new ObjectOutputStream(f);
+                o.writeObject(st);
+                o.close();
+			    f.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found");
+            } catch (IOException e) {
+                System.out.println("Error initializing stream");
+            }
 
             return st.getId();
     }
