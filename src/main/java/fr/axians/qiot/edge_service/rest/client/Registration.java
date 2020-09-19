@@ -19,6 +19,7 @@ import java.util.Set;
 import fr.axians.qiot.edge_service.rest.client.Station;
 import fr.axians.qiot.edge_service.service.RegistrationService;
 
+
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.TEXT_PLAIN)
 @Path("/register")
@@ -34,11 +35,19 @@ public class Registration {
     RegistrationService regService;
 
     @GET
-    public Set<Station> register(@PathParam("serial") String serial,
+    public int register(@PathParam("serial") String serial,
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
 
-            return regService.getByStations("36c2a3079e97428fa514f2beb0fd4e6a", "FRutf8", 2.3, 48.8);
+            Station st = new Station();
+            st.serial = "36c2a3079e97428fa514f2beb0fd4e6a";
+            st.name = "FRutf8";
+            st.longitude = 2.3;
+            st.latitude = 48.8;
+
+            st.id = regService.getByStations(st.serial, st.name, st.longitude, st.latitude);
+
+            return st.id;
     }
 }
