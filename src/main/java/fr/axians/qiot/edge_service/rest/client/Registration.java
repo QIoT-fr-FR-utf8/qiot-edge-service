@@ -20,7 +20,6 @@ public class Registration {
     @Inject
     @RestClient
     RegistrationService regService;
-
     @GET
     public int register(@PathParam("serial") String serial,
             @PathParam("name") String name,
@@ -28,13 +27,17 @@ public class Registration {
             @PathParam("latitude") double latitude) {
 
             Station st = new Station();
-            st.serial = "36c2a3079e97428fa514f2beb0fd4e6a";
-            st.name = "FRutf8";
-            st.longitude = 2.3;
-            st.latitude = 48.8;
+            st.setSerial("36c2a3079e97428fa514f2beb0fd4e6a");
+            st.setName("FRutf8");
+            st.setLongitude(2.3);
+            st.setLatitude(48.8);
 
-            st.id = regService.regStation(st.serial, st.name, st.longitude, st.latitude);
+            int stationId;
+            stationId = regService.regStation(st.getSerial(), st.getName(), st.getLongitude(), st.getLongitude());
+            st.setId(stationId);
+            st.setActive(true);
 
-            return st.id;
+            return st.getId();
     }
 }
+
