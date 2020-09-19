@@ -10,6 +10,15 @@ import javax.ws.rs.Produces;
 import java.util.Set;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+public class station {
+    public Int id;
+    public String serial = "36c2a3079e97428fa514f2beb0fd4e6a";
+    public String name = "FRutf8";
+    public double longitude = 2.3;
+    public double latitude = 48.8;
+}
+
+
 @RegisterRestClient
 public interface RegistrationService {
 
@@ -17,7 +26,7 @@ public interface RegistrationService {
     @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
-    Set<stationID>  getByRegister(@PathParam("serial") String serial,
+    Set<station>  getByRegister(@PathParam("serial") String serial,
     @PathParam("name") String name,
     @PathParam("longitude") double longitude,
     @PathParam("latitude") double latitude);
