@@ -36,21 +36,24 @@ public class UnRegistration {
             FileInputStream fi = new FileInputStream(new File("station.txt"));;
             ObjectInputStream oi = new ObjectInputStream(fi);
 
-            // Read objects
+            // Read station object from file
             Station st2 = (Station) oi.readObject();
             oi.close();
             fi.close();
 
-            System.out.println(st2.getId());
+            regService.unregStation(st2.getId());
+            return 0;
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("File not found, so I can't unregister this station");
+            return 1;
         } catch (IOException e) {
             System.out.println(e);
+            return 1;
         } catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-        return 0;
+            e.printStackTrace();
+            return 1;
+        }
     }
 
 }
