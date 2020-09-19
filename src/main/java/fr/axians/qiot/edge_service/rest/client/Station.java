@@ -1,4 +1,4 @@
-package org.acme.rest.client;
+package fr.axians.qiot.edge_service.rest;
 
 public class Station {
 
