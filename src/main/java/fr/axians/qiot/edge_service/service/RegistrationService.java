@@ -13,6 +13,8 @@ import java.util.Set;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
+@Produces(MediaType.TEXT_PLAIN)
+@Consumes(MediaType.TEXT_PLAIN)
 @Path("/v1")
 @RegisterRestClient
 public interface RegistrationService {
