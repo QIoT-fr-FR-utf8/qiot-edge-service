@@ -1,4 +1,4 @@
-package fr.axians.qiot.edge_service.rest;
+package fr.axians.qiot.edge_service.rest.client;
 
 public class Station {
 
