@@ -54,7 +54,7 @@ public class Registration {
                 f.close();
 
                 FileInputStream fi = new FileInputStream(new File("station.txt"));;
-                ObjectInputStream oi = new ObjectInputStream(fi);;
+                ObjectInputStream oi = new ObjectInputStream(fi);
                 oi.close();
 			    fi.close();
             } catch (FileNotFoundException e) {
