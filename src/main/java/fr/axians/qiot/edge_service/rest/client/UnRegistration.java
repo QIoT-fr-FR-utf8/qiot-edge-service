@@ -10,7 +10,6 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import fr.axians.qiot.edge_service.service.RegistrationService;
-import fr.axians.qiot.edge_service.rest.client.Station;
 
 
 import java.io.File;
