@@ -19,6 +19,8 @@ import java.util.Set;
 import fr.axians.qiot.edge_service.rest.client.Station;
 import fr.axians.qiot.edge_service.service.RegistrationService;
 
+@Produces(MediaType.TEXT_PLAIN)
+@Consumes(MediaType.TEXT_PLAIN)
 @Path("/register")
 public class Registration {
 
