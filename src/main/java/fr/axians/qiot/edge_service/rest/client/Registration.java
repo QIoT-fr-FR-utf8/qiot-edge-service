@@ -28,10 +28,7 @@ public class Registration {
     @GET
     @Path("/register")
     @Produces(MediaType.TEXT_PLAIN)
-    public Set<Station> register(@PathParam("serial") String serial,
-            @PathParam("name") String name,
-            @PathParam("longitude") double longitude,
-            @PathParam("latitude") double latitude) {
+    public Set<Station> register() {
                 return regService.getByRegister(serial, name, longitude, latitude);
     }
 }
