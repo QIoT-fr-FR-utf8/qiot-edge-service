@@ -42,6 +42,8 @@ public class Registration {
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
 
-            return regService.getByStations("36c2a3079e97428fa514f2beb0fd4e6a", "FRutf8", 2.3, 48.8);
+            int returnint = regService.getByStations(serial, name, longitude, latitude);
+
+            return returnint;
     }
 }
