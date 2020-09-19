@@ -27,7 +27,7 @@ public interface RegistrationService {
     @PathParam("latitude") double latitude);
 
     @DELETE
-    @Path("/register/id/{id}")
+    @Path("/register/idtest/{id}")
     public void unregStation(@PathParam("id") int id);
 
 }
