@@ -51,7 +51,10 @@ public class Registration {
                 ObjectOutputStream o = new ObjectOutputStream(f);
                 o.writeObject(st);
                 o.close();
-			    f.close();
+                f.close();
+
+                FileInputStream fi = null;
+			    ObjectInputStream oi = null;
             } catch (FileNotFoundException e) {
                 System.out.println("File not found");
             } catch (IOException e) {
