@@ -1,6 +1,5 @@
 package fr.axians.qiot.edge_service.service;
 
-import javax.enterprise.context.ApplicationScoped;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import javax.ws.rs.core.MediaType;
 import fr.axians.qiot.edge_service.rest.client.Station;

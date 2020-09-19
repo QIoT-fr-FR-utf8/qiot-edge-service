@@ -34,7 +34,6 @@ public class Registration {
     RegistrationService regService;
 
     @GET
-    @Path("/register")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
     public Set<Station> register(@PathParam("serial") String serial,
