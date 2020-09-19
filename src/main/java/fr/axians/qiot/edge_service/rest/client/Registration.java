@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import java.util.Set;
 
 import fr.axians.qiot.edge_service.rest.client.Station;
@@ -19,9 +20,9 @@ import fr.axians.qiot.edge_service.service.RegistrationService;
 @Path("/register")
 public class Registration {
 
-@Inject
-@RestClient
-RegistrationService regService;
+    @Inject
+    @RestClient
+    RegistrationService regService;
 
     @PUT
     @Path("/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
