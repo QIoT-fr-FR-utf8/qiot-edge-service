@@ -33,7 +33,7 @@ public class Registration {
     @RestClient
     RegistrationService regService;
 
-    @GET
+    @PUT
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
     public Set<Station> register(@PathParam("serial") String serial,
