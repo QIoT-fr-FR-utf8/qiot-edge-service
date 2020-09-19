@@ -38,7 +38,7 @@ public class Registration {
             st.longitude = 2.3;
             st.latitude = 48.8;
 
-            st.id = regService.getStation(st.serial, st.name, st.longitude, st.latitude);
+            st.id = regService.regStation(st.serial, st.name, st.longitude, st.latitude);
 
             return st.id;
     }
