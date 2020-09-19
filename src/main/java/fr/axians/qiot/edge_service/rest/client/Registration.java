@@ -15,6 +15,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import fr.axians.qiot.edge_service.service.RegistrationService;
 
 @Path("/register")
+@RegisterRestClient
 @ApplicationScoped
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.TEXT_PLAIN)
@@ -34,8 +35,6 @@ double latitude = 48.8;
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
-
-        int returnint = regService.register(serial, name, longitude, latitude);
-        return returnint;
+        return serial;
     }
 }

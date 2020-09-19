@@ -1,7 +1,5 @@
 package fr.axians.qiot.edge_service.service;
 
-import javax.enterprise.context.ApplicationScoped;
-
 @ApplicationScoped
 public interface RegistrationService {
 
