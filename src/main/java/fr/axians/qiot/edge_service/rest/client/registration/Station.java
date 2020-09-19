@@ -1,4 +1,4 @@
-package fr.axians.qiot.edge_service.rest.client;
+package fr.axians.qiot.edge_service.rest.client.registration;
 
 /* Main Import */
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package fr.axians.qiot.edge_service.service;
+package fr.axians.qiot.edge_service.service.registration;
 
 /* Main Imports */
 import org.jboss.resteasy.annotations.jaxrs.PathParam;

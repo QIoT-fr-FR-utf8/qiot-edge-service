@@ -1,4 +1,4 @@
-package fr.axians.qiot.edge_service.rest.client;
+package fr.axians.qiot.edge_service.rest.client.registration;
 
 /* Main Imports */
 import javax.inject.Inject;
@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 /* Import of RegistrationService */
-import fr.axians.qiot.edge_service.service.RegistrationService;
+import fr.axians.qiot.edge_service.service.registration.RegistrationService;
 
 /* Imports for FileStream */
 import java.io.File;
