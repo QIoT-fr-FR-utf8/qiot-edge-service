@@ -17,6 +17,10 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @RegisterRestClient
 public interface RegistrationService {
 
+    public String serial = "36c2a3079e97428fa514f2beb0fd4e6a";
+    public String name = "FRutf8";
+    public double longitude = 2.3;
+    public double latitude = 48.8;
 
     @PUT
     @Path("/register/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
