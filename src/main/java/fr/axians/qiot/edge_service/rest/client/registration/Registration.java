@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -31,10 +30,7 @@ public class Registration {
     RegistrationService regService;
 
     @GET
-    public int register(@PathParam("serial") String serial,
-            @PathParam("name") String name,
-            @PathParam("longitude") double longitude,
-            @PathParam("latitude") double latitude) {
+    public int register(String serial, String name, double longitude, double latitude) {
 
             /* Initialize Station object. Note for the future : values ​​will not be initialized in the code */
             Station st = new Station();
@@ -57,7 +53,7 @@ public class Registration {
                 o.close();
                 f.close();
             } catch (FileNotFoundException e) {
-                System.out.println("File not found");
+                System.out.println("File not found, can't register this station");
             } catch (IOException e) {
                 System.out.println(e);
             }
