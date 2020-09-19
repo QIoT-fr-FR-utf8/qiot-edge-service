@@ -37,13 +37,11 @@ public class Registration {
     @Path("/register")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
-    public int register(@PathParam("serial") String serial,
+    public Set<Station> register(@PathParam("serial") String serial,
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
 
-            int returnint = regService.getByStations(serial, name, longitude, latitude);
-
-            return returnint;
+            return regService.getByStations(serial, name, longitude, latitude);
     }
 }
