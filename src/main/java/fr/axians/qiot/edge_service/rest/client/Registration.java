@@ -21,6 +21,11 @@ import fr.axians.qiot.edge_service.service.RegistrationService;
 @Path("/register")
 public class Registration {
 
+    public String serial = "36c2a3079e97428fa514f2beb0fd4e6a";
+    public String name = "FRutf8";
+    public double longitude = 2.3;
+    public double latitude = 48.8;
+
     @Inject
     @RestClient
     RegistrationService regService;
@@ -32,6 +37,7 @@ public class Registration {
             @PathParam("name") String name,
             @PathParam("longitude") double longitude,
             @PathParam("latitude") double latitude) {
-                return regService.getByRegister(serial, name, longitude, latitude);
+
+            return regService.getByRegister(serial, name, longitude, latitude);
     }
 }
