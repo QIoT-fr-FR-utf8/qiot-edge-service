@@ -1,4 +1,4 @@
-package fr.axians.qiot.edge_service.rest;
+package fr.axians.qiot.edge_service.rest.client;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
