@@ -41,7 +41,7 @@ public class UnRegistration {
             oi.close();
             fi.close();
 
-            System.out.println(st2.toString());
+            System.out.println(st2.getId());
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
