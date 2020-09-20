@@ -23,9 +23,12 @@ public class TelemetryService {
     @Outgoing("gas-stream")
     public Flowable <Gas> streamData() {
 
+        Instant instant = Instant.now();
+        String time = instant.toString();
+
         /* Initializing gas object with test values */
 
-        gtest.setInstant("2020-09-20T15:48:00.002818Z");
+        gtest.setInstant(time);
         gtest.setAdc(128431.13772455092);
         gtest.setNh3(192387.0967741936);
         gtest.setOxidising(10594.594594594595);
