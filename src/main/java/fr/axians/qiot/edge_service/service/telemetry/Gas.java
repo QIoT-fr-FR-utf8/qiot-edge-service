@@ -1,9 +1,11 @@
 package fr.axians.qiot.edge_service.service.telemetry;
 
+import java.time.Instant;
+
 public class Gas {
 
     public Integer stationid;
-    public String instant;
+    public Instant instant;
     public double adc;
     public double nh3;
     public double oxidising;

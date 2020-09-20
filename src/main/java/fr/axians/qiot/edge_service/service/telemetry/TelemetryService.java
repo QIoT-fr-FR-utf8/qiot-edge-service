@@ -23,11 +23,13 @@ public class TelemetryService {
 
         /* Initializing gas object with test values */
 
-        gtest.setInstant("2020-09-20T14:00:00.002818Z");
+        gtest.setInstant("2020-09-20T15:48:00.002818Z");
         gtest.setAdc(128431.13772455092);
         gtest.setNh3(192387.0967741936);
         gtest.setOxidising(10594.594594594595);
         gtest.setReducing(192387.0967741936);
+
+        System.out.println(gtest.getInstant());
 
         /* Reading station object from file */
         try {
