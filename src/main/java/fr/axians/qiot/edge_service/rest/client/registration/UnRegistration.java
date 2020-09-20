@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -29,7 +30,7 @@ public class UnRegistration {
     @RestClient
     RegistrationService regService;
     @GET
-    public int unregister(int id){
+    public int unregister(@PathParam("id") int id){
 
         /* Reading station object from file */
         try {
