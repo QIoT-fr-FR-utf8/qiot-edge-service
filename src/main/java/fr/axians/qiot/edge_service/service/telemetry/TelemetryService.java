@@ -70,7 +70,6 @@ public class TelemetryService {
         String jsonString;
         try {
             jsonString = mapper.writeValueAsString(gtest);
-            System.out.println(jsonString);
         } catch (JsonProcessingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
