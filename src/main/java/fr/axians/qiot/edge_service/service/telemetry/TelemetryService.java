@@ -17,7 +17,7 @@ public class TelemetryService {
 
     /* Pollution stream */
     @Outgoing("gas-stream")
-    public Gas streamData(Gas gtest) {
+    public Gas streamData() {
 
         /* Initializing gas object with test values */
 
