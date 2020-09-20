@@ -1,6 +1,8 @@
 package fr.axians.qiot.edge_service.service.telemetry;
 
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
+import io.reactivex.Flowable;
+import java.util.concurrent.TimeUnit;
 
 /* Imports for FileStream */
 import java.io.File;
@@ -17,7 +19,7 @@ public class TelemetryService {
 
     /* Gas stream */
     @Outgoing("gas-stream")
-    public Gas streamData() {
+    public Flowable <Gas> streamData() {
 
         /* Initializing gas object with test values */
 
@@ -38,9 +40,9 @@ public class TelemetryService {
             fi.close();
 
             /* Adding stationId on gas object */
-            int stationId;
-            stationId = st.getId();
-            gtest.setStationid(stationId);
+            //int stationId;
+            //stationId = st.getId();
+            gtest.setStationid(12);
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
@@ -49,6 +51,9 @@ public class TelemetryService {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return gtest;
+
+        /* Send data every 5 seconds */
+        return Flowable.interval(5, TimeUnit.SECONDS)
+        .map(tick -> gtest);
         }
 }
