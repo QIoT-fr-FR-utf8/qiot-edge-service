@@ -20,11 +20,13 @@ import fr.axians.qiot.edge_service.rest.client.registration.Station;
 
 public class TelemetryService {
 
+    /* Objects creation */
     Gas gtest = new Gas();
+    Pollution ptest = new Pollution();
 
     /* Gas stream */
     @Outgoing("gas-stream")
-    public Flowable <String> streamData() throws JsonProcessingException {
+    public Flowable <String> streamGasData() throws JsonProcessingException {
 
         Instant instant = Instant.now();
         String time = instant.toString();
@@ -70,5 +72,64 @@ public class TelemetryService {
         /* Send data every 5 seconds */
         return Flowable.interval(5, TimeUnit.SECONDS)
         .map(tick -> jsonString);
+        }
+
+
+    /* Pollution stream */
+    @Outgoing("pollution-stream")
+    public Flowable <String> streamPollutionData() throws JsonProcessingException {
+
+        Instant instantp = Instant.now();
+        String timep = instantp.toString();
+
+        /* Initializing pollution object with test values */
+
+        ptest.setInstant(timep);
+        ptest.setPM1_0(240);
+        ptest.setPM2_5(156);
+        ptest.setPM10(114);
+        ptest.setPM1_0_atm(81);
+        ptest.setPM2_5_atm(204);
+        ptest.setPM10_atm(134);
+        ptest.setGt0_3um(21366);
+        ptest.setGt0_5um(5774);
+        ptest.setGt1_0um(14);
+        ptest.setGt2_5um(1355);
+        ptest.setGt5_0um(126);
+        ptest.setGt10um(59);
+
+        /* Reading station object from file */
+        try {
+            FileInputStream fip = new FileInputStream(new File("station.txt"));;
+            ObjectInputStream oip = new ObjectInputStream(fip);
+
+            /* Read station object from file */
+            Station stp = (Station) oip.readObject();
+            oip.close();
+            fip.close();
+
+            /* Adding stationId on gas object */
+            //int stationId;
+            //stationId = st.getId();
+            ptest.setStationid(12);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        /* Creating the ObjectMapper object */
+        ObjectMapper mapperp = new ObjectMapper();
+
+        /* Converting the Gas object to JSONString */
+        String jsonStringp = mapperp.writeValueAsString(ptest);
+        System.out.println(jsonStringp);
+
+        /* Send data every 5 seconds */
+        return Flowable.interval(5, TimeUnit.SECONDS)
+        .map(tick -> jsonStringp);
         }
 }
