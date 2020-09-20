@@ -108,7 +108,7 @@ public class TelemetryService {
             oip.close();
             fip.close();
 
-            /* Adding stationId on gas object */
+            /* Adding stationId on pollution object */
             //int stationId;
             //stationId = st.getId();
             ptest.setStationid(12);
@@ -124,7 +124,7 @@ public class TelemetryService {
         /* Creating the ObjectMapper object */
         ObjectMapper mapperp = new ObjectMapper();
 
-        /* Converting the Gas object to JSONString */
+        /* Converting the Pollution object to JSONString */
         String jsonStringp = mapperp.writeValueAsString(ptest);
         System.out.println(jsonStringp);
 
