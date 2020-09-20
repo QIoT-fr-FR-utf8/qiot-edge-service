@@ -4,6 +4,9 @@ import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import io.reactivex.Flowable;
 import java.util.concurrent.TimeUnit;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.time.Instant;
 
 /* Imports for FileStream */
@@ -21,7 +24,7 @@ public class TelemetryService {
 
     /* Gas stream */
     @Outgoing("gas-stream")
-    public Flowable <Gas> streamData() {
+    public Flowable<Gas> streamData() {
 
         Instant instant = Instant.now();
         String time = instant.toString();
@@ -38,7 +41,8 @@ public class TelemetryService {
 
         /* Reading station object from file */
         try {
-            FileInputStream fi = new FileInputStream(new File("station.txt"));;
+            FileInputStream fi = new FileInputStream(new File("station.txt"));
+            ;
             ObjectInputStream oi = new ObjectInputStream(fi);
 
             /* Read station object from file */
@@ -47,8 +51,8 @@ public class TelemetryService {
             fi.close();
 
             /* Adding stationId on gas object */
-            //int stationId;
-            //stationId = st.getId();
+            // int stationId;
+            // stationId = st.getId();
             gtest.setStationid(12);
 
         } catch (FileNotFoundException e) {
@@ -56,6 +60,19 @@ public class TelemetryService {
         } catch (IOException e) {
             System.out.println(e);
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        /* Creating the ObjectMapper object */
+        ObjectMapper mapper = new ObjectMapper();
+
+        /* Converting the Gas object to JSONString */
+        String jsonString;
+        try {
+            jsonString = mapper.writeValueAsString(gtest);
+            System.out.println(jsonString);
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
