@@ -24,7 +24,7 @@ public class TelemetryService {
 
     /* Gas stream */
     @Outgoing("gas-stream")
-    public Flowable<Gas> streamData() {
+    public Flowable <String> streamData() throws JsonProcessingException {
 
         Instant instant = Instant.now();
         String time = instant.toString();
@@ -37,12 +37,9 @@ public class TelemetryService {
         gtest.setOxidising(10594.594594594595);
         gtest.setReducing(192387.0967741936);
 
-        System.out.println(gtest.getInstant());
-
         /* Reading station object from file */
         try {
-            FileInputStream fi = new FileInputStream(new File("station.txt"));
-            ;
+            FileInputStream fi = new FileInputStream(new File("station.txt"));;
             ObjectInputStream oi = new ObjectInputStream(fi);
 
             /* Read station object from file */
@@ -51,8 +48,8 @@ public class TelemetryService {
             fi.close();
 
             /* Adding stationId on gas object */
-            // int stationId;
-            // stationId = st.getId();
+            //int stationId;
+            //stationId = st.getId();
             gtest.setStationid(12);
 
         } catch (FileNotFoundException e) {
@@ -67,16 +64,11 @@ public class TelemetryService {
         ObjectMapper mapper = new ObjectMapper();
 
         /* Converting the Gas object to JSONString */
-        String jsonString;
-        try {
-            jsonString = mapper.writeValueAsString(gtest);
-        } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        String jsonString = mapper.writeValueAsString(gtest);
+        System.out.println(jsonString);
 
         /* Send data every 5 seconds */
         return Flowable.interval(5, TimeUnit.SECONDS)
-        .map(tick -> gtest);
+        .map(tick -> jsonString);
         }
 }
