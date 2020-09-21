@@ -26,8 +26,9 @@ public class SensorResource {
     @GET
     @Path("/gas")
     @Produces(MediaType.APPLICATION_JSON)
-    public Set<Result.GasResult> name(@PathParam String name) {
-        return sensorService.getGasResult();
+    public Result toto() {
+        
+        return sensorService.getResult();
     }
 
 }

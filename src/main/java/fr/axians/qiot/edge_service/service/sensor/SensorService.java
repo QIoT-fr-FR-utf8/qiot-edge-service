@@ -1,6 +1,6 @@
 package fr.axians.qiot.edge_service.service.sensor;
 
-import java.util.Set;
+import java.util.List;
 import java.util.concurrent.CompletionStage;
 
 import javax.ws.rs.GET;
@@ -19,5 +19,5 @@ public interface SensorService {
     @GET
     @Path("/gas")
     @Produces("application/json")
-    Set<Result.GasResult> getGasResult();
+    Result getResult();
 }
