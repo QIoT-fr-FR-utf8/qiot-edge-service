@@ -17,7 +17,7 @@ import io.smallrye.mutiny.Uni;
 public interface SensorService {
 
     @GET
-    @Path("/{type}")
+    @Path("/gas")
     @Produces("application/json")
-    Set<Result.GasResult> getGasResults();
+    Set<Result.GasResult> getGasResult();
 }

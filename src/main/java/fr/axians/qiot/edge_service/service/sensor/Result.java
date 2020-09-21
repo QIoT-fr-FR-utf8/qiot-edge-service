@@ -3,7 +3,7 @@ package fr.axians.qiot.edge_service.service.sensor;
 import java.util.List;
 
 public class Result {
-    public List<GasResult> GasResults;
+    public List<GasResult> GasResult;
     public class GasResult {
 
         private String instant;
