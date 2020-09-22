@@ -20,6 +20,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+/* Imports for Read File */
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+
 /* Access on : IP:8080/register */
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.TEXT_PLAIN)
@@ -38,8 +44,16 @@ public class Registration {
 
             /* Initialize Station object. Note for the future : values ​​will not be initialized in the code */
             Station st = new Station();
-            st.setSerial("36c2a3079e97428fa514f2beb0fd4e6a");
-            st.setName("FRutf8");
+            //st.setSerial("36c2a3079e97428fa514f2beb0fd4e6a");
+            java.nio.file.Path  path = Paths.get("/etc/machine-id");
+            String content = null;
+            try {
+                content = Files.readString(path, StandardCharsets.UTF_8);
+            } catch (IOException e) {
+                System.out.println(e);
+            };
+            st.setSerial(content);
+            st.setName("FRutf81");
             st.setLongitude(2.3);
             st.setLatitude(48.8);
 

@@ -30,7 +30,8 @@ public class UnRegistration {
     @RestClient
     RegistrationService regService;
     @GET
-    public int unregister(@PathParam("id") int id){
+    @Path("/{id}")
+    public int unregister(int id){
 
         /* Reading station object from file */
         try {
