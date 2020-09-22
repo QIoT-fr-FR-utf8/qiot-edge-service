@@ -1,13 +1,9 @@
 package fr.axians.qiot.edge_service.service.sensor;
 
-import java.util.List;
-import java.io.Serializable;
-
-public class Result implements Serializable{
+public class Result {
     public SensorResult result;
 
-  
-    public class SensorResult implements Serializable{
+    public class SensorResult{
     
         public String instant;
         public Double nh3;
