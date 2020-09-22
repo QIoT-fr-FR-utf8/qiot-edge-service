@@ -17,9 +17,16 @@ public class SensorResource {
     @GET
     @Path("/gas")
     @Produces(MediaType.APPLICATION_JSON)
-    public Result toto() {
+    public Result getGas() {
         
-        return sensorService.getResult();
+        return sensorService.getGasResult();
     }
 
+    @GET
+    @Path("/pollution")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Result getPollution() {
+        
+        return sensorService.getPollutionResult();
+    }
 }

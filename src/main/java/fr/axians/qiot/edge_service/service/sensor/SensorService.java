@@ -12,5 +12,10 @@ public interface SensorService {
     @GET
     @Path("/gas")
     @Produces("application/json")
-    Result getResult();
+    Result getGasResult();
+
+    @GET
+    @Path("/pollution")
+    @Produces("application/json")
+    Result getPollutionResult();
 }
