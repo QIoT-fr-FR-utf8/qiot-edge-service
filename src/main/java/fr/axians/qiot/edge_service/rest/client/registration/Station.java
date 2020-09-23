@@ -5,12 +5,12 @@ import java.io.Serializable;
 
 public class Station implements Serializable  {
 
-    public Integer id;
-    public String serial;
-    public String name;
-    public double longitude;
-    public double latitude;
-    public boolean active;
+    private Integer id;
+    private String serial;
+    private String name;
+    private double longitude;
+    private double latitude;
+    private boolean active;
 
     public Integer getId() {
         return this.id;
