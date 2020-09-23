@@ -43,7 +43,7 @@ public class AppLifecycleBean {
         this.st = new Station();
         
         //Defined the machine-id path to be able to regester
-        java.nio.file.Path  path = Paths.get("/etc/test-machine-id");
+        java.nio.file.Path  path = Paths.get("/etc/machine-id");
         String content = null;
 
         //Get the id defined in the file
