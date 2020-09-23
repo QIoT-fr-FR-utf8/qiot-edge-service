@@ -26,13 +26,12 @@ import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 
 
-@Path("/register")
+//@Path("/register")
 @ApplicationScoped
 public class AppLifecycleBean {
 
     private static final Logger LOGGER = Logger.getLogger("ListenerBean");
     private Station st;
-        
 
     @Inject
     @RestClient
@@ -43,14 +42,14 @@ public class AppLifecycleBean {
         this.st = new Station();
         
         //Defined the machine-id path to be able to regester
-        java.nio.file.Path  path = Paths.get("/etc/machine-id");
+        java.nio.file.Path  path = Paths.get("/etc/test-machine-id");
         String content = null;
 
         //Get the id defined in the file
         try {
             content = Files.readString(path, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            System.out.println(e);
+            LOGGER.error(e);
         };
 
         //Initialize the Station information
@@ -83,10 +82,34 @@ public class AppLifecycleBean {
         regService.unregStation(this.st.getId());
     }
 
+    @Scheduled(every = "5s")
+    void run() { 
+        String measurement = null;
+        String decoratedMeasurement = null; 
+        try { 
+            measurement = sensorC1ientService.getGasMeasurement(); 
+            decoratedMeasurement = measurementDecorator.decorate(measurement);
+            LOGGER.info("Collected GAS measurement: {}", decoratedMeasurement); 
+            mqttDataCollectionCtientService.sendGas(decoratedMeasurement); 
+        } catch (Exception e) { 
+            LOGGER.error("An error occurred retrieving GAS maeasurement", e); 
+        }
+        try { 
+        measurement = sensorClientService.getParticutatesMeasurement(); 
+        decoratedMeasurement = measurementDecorator.decorate(measurement); 
+        LOGGER.info("Collected PARTICULE measurement: {}", 
+            decoratedMeasurement); 
+        mqttDataCollectionClientService.sendPoIlution(decoratedMeasurement); 
+        } catch (Exception e) { 
+            LOGGER.error( 
+            "An error occurred retrieving Particulates maeasurement", e);
+        }
+    }
+
     
-    @GET
-    @Path("/id")
-    @Produces(MediaType.TEXT_PLAIN)
+    //@GET
+    //@Path("/id")
+    //@Produces(MediaType.TEXT_PLAIN)
     public int getRegistrationId(){
         return this.st.getId();
     }
