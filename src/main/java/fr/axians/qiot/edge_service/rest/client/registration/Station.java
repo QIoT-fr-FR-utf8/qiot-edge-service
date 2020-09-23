@@ -8,9 +8,9 @@ public class Station implements Serializable  {
     private Integer id;
     private String serial;
     private String name;
-    private double longitude;
-    private double latitude;
-    private boolean active;
+    private Double longitude;
+    private Double latitude;
+    private Boolean active;
 
     public Integer getId() {
         return this.id;
