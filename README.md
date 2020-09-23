@@ -49,7 +49,26 @@ To achieve this mission, the teams have all received a development environment:
     qiot-edge-service <-- 443/TCP --> Registeration_Service)
 
 
+## Running the application in reel environment
 
+From Fedora IOT on Raspberry PI, execute the following commands
+
+### Production
+
+```
+podman run \
+-v /etc/machine-id:/etc/machine-id:ro \
+quay.io/acb-fr/qiot-edge-service:1-aarch64
+```
+
+### Debug Mod
+
+```
+podman run \
+-it --rm
+-v /etc/machine-id:/etc/machine-id:ro \
+quay.io/acb-fr/qiot-edge-service:1-aarch64
+```
 
 ## Running the application in dev mode
 
