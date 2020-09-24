@@ -18,6 +18,12 @@ import javax.annotation.PostConstruct;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import fr.axians.qiot.edge_service.service.registration.RegistrationService;
+import fr.axians.qiot.edge_service.service.telemetry.TelemetryService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import io.quarkus.scheduler.Scheduled;
+import io.quarkus.scheduler.ScheduledExecution;
+import javax.ws.rs.Path;
+
 
 /* Imports for Read File */
 import java.nio.file.Files;
@@ -32,6 +38,9 @@ public class AppLifecycleBean {
 
     private static final Logger LOGGER = Logger.getLogger("ListenerBean");
     private Station st;
+    
+    @Inject
+    TelemetryService tele;
 
     @Inject
     @RestClient
@@ -82,25 +91,18 @@ public class AppLifecycleBean {
         regService.unregStation(this.st.getId());
     }
 
-    @Scheduled(every = "5s")
     void run() { 
-        String measurement = null;
-        String decoratedMeasurement = null; 
+        
+
         try { 
-            measurement = sensorC1ientService.getGasMeasurement(); 
-            decoratedMeasurement = measurementDecorator.decorate(measurement);
-            LOGGER.info("Collected GAS measurement: {}", decoratedMeasurement); 
-            mqttDataCollectionCtientService.sendGas(decoratedMeasurement); 
-        } catch (Exception e) { 
+            tele.streamGasData();
+        } catch (JsonProcessingException e) { 
             LOGGER.error("An error occurred retrieving GAS maeasurement", e); 
         }
+
         try { 
-        measurement = sensorClientService.getParticutatesMeasurement(); 
-        decoratedMeasurement = measurementDecorator.decorate(measurement); 
-        LOGGER.info("Collected PARTICULE measurement: {}", 
-            decoratedMeasurement); 
-        mqttDataCollectionClientService.sendPoIlution(decoratedMeasurement); 
-        } catch (Exception e) { 
+            tele.streamPollutionData();
+        } catch (JsonProcessingException e) { 
             LOGGER.error( 
             "An error occurred retrieving Particulates maeasurement", e);
         }
