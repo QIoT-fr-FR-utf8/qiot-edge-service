@@ -43,7 +43,7 @@ public class TelemetryService {
     public Flowable <String> streamPollutionData() throws JsonProcessingException {
         /* Creating the ObjectMapper object */
         ObjectMapper mapper = new ObjectMapper();
-
+        LOGGER.info(mapper.writeValueAsString(sr.getPollution()));
         /* Converting the Gas object to JSONString */
         return Flowable.interval(5, TimeUnit.SECONDS).map(interval ->  mapper.writeValueAsString(sr.getPollution()));
     }
