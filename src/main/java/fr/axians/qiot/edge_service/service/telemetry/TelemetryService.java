@@ -7,7 +7,9 @@ import fr.axians.qiot.edge_service.service.sensor.GasResult;
 import fr.axians.qiot.edge_service.service.sensor.SensorResource;
 import fr.axians.qiot.edge_service.service.sensor.PollutionResult;
 
+
 import javax.inject.Inject;
+import org.jboss.logging.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -20,6 +22,7 @@ import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
 public class TelemetryService {
     
+    private static final Logger LOGGER = Logger.getLogger("ListenerBean");
     @Inject
     SensorResource sr;
 
@@ -30,8 +33,8 @@ public class TelemetryService {
         
         /* Creating the ObjectMapper object */
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println( mapper.writeValueAsString(sr.getGas()));
-        return Flowable.interval(5, TimeUnit.SECONDS) .map(interval -> mapper.writeValueAsString(sr.getGas()));
+        LOGGER.info(mapper.writeValueAsString(sr.getGas()));
+        return Flowable.interval(5, TimeUnit.SECONDS).map(interval -> mapper.writeValueAsString(sr.getGas()));
     }
 
 

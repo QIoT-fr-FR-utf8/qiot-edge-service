@@ -63,7 +63,7 @@ public class AppLifecycleBean {
 
         //Initialize the Station information
         this.st.setSerial(content);
-        this.st.setName("FRutf758");
+        this.st.setName("FRutf8_T0");
         this.st.setLongitude(2.3);
         this.st.setLatitude(48.8);
 
