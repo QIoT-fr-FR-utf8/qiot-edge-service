@@ -103,6 +103,9 @@ From Fedora IOT on Raspberry PI, execute the following commands
 ### Env Variables
 
 > SENSORHOST: FQDN or IP of Python Sensor Service ex: (sensor)
+> TEAMNAME: Name of Edge Device or Team
+> TEAMLONGITUDE: Latitude of Device (ex: -3.65)
+> TEAMLATITUDE: Latitude of Device (ex: 47.09)
 
 ### Production
 
@@ -110,6 +113,7 @@ From Fedora IOT on Raspberry PI, execute the following commands
 podman run \
 -v /etc/machine-id:/etc/machine-id:ro \
 -e SENSORHOST=changeme \
+-e TEAMNAME=QIoT.fr_FR.UTF8 \
 quay.io/acb-fr/qiot-edge-service:1-aarch64
 ```
 

@@ -3,14 +3,23 @@ package fr.axians.qiot.edge_service.rest.client.registration;
 /* Main Import */
 import java.io.Serializable;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 public class Station implements Serializable  {
 
-    private Integer id;
-    private String serial;
-    private String name;
-    private Double longitude;
-    private Double latitude;
-    private Boolean active;
+    public Integer id;
+    public String serial;
+
+    //@ConfigProperty(name = "team.name")
+    String name;
+
+    //@ConfigProperty(name = "team.longitude")
+    Double longitude;
+
+    //@ConfigProperty(name = "team.latitude")
+    Double latitude;
+
+    public Boolean active;
 
     public Integer getId() {
         return this.id;

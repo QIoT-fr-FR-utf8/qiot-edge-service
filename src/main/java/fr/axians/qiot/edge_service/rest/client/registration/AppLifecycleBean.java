@@ -16,6 +16,8 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.annotation.PostConstruct;
 import javax.ws.rs.core.MediaType;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import fr.axians.qiot.edge_service.service.registration.RegistrationService;
 import fr.axians.qiot.edge_service.service.telemetry.TelemetryService;
@@ -31,6 +33,8 @@ import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 
 //@Path("/register")
 @ApplicationScoped
@@ -39,6 +43,15 @@ public class AppLifecycleBean {
     private static final Logger LOGGER = Logger.getLogger("ListenerBean");
     private Station st;
     
+    @ConfigProperty(name = "team.name")
+    String name;
+
+    @ConfigProperty(name = "team.longitude")
+    Double longitude;
+
+    @ConfigProperty(name = "team.latitude")
+    Double latitude;
+
     @Inject
     TelemetryService tele;
 
@@ -49,9 +62,10 @@ public class AppLifecycleBean {
     @PostConstruct
     void init(){
         this.st = new Station();
+        LOGGER.info(this.st.toString());
         
         //Defined the machine-id path to be able to regester
-        java.nio.file.Path  path = Paths.get("/etc/test-machine-id");
+        java.nio.file.Path  path = Paths.get("/etc/machine-id");
         String content = null;
 
         //Get the id defined in the file
@@ -63,9 +77,10 @@ public class AppLifecycleBean {
 
         //Initialize the Station information
         this.st.setSerial(content);
-        this.st.setName("FRutf8_T0");
-        this.st.setLongitude(2.3);
-        this.st.setLatitude(48.8);
+        this.st.setName(name);
+        this.st.setLongitude(longitude);
+        this.st.setLatitude(latitude);
+        LOGGER.info("Nom d equipe : "+this.st.getName());
 
         /* Retrieve stationId and activate the station */
         int stationId =0;
