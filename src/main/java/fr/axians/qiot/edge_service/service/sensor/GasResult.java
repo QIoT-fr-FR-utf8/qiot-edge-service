@@ -7,7 +7,7 @@ public class GasResult extends Sensor{
     public Double oxidising;
     public Double reducing;
 
-    public GasResult(int id,Double adc, String instant, Double nh3, Double oxidising, Double reducing){
+    public GasResult(Integer id,Double adc, String instant, Double nh3, Double oxidising, Double reducing){
         this.stationId = id;
         this.instant = instant;
         this.nh3 = nh3;

@@ -21,7 +21,7 @@ public interface RegistrationService {
     @Path("/register/serial/{serial}/name/{name}/longitude/{longitude}/latitude/{latitude}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
-    public int regStation(@PathParam("serial") String serial,
+    public Integer regStation(@PathParam("serial") String serial,
     @PathParam("name") String name,
     @PathParam("longitude") double longitude,
     @PathParam("latitude") double latitude);
@@ -29,6 +29,6 @@ public interface RegistrationService {
     /* Unregistration of the station */
     @DELETE
     @Path("/register/id/{id}")
-    public void unregStation(@PathParam("id") int id);
+    public void unregStation(@PathParam("id") Integer id);
 
 }

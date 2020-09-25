@@ -83,7 +83,7 @@ public class AppLifecycleBean {
         LOGGER.info("Nom d equipe : "+this.st.getName());
 
         /* Retrieve stationId and activate the station */
-        int stationId =0;
+        Integer stationId =0;
         stationId = regService.regStation(this.st.getSerial(), this.st.getName(), this.st.getLongitude(), this.st.getLatitude());
         this.st.setId(stationId);
         this.st.setActive(true);
@@ -127,7 +127,7 @@ public class AppLifecycleBean {
     //@GET
     //@Path("/id")
     //@Produces(MediaType.TEXT_PLAIN)
-    public int getRegistrationId(){
+    public Integer getRegistrationId(){
         return this.st.getId();
     }
 
