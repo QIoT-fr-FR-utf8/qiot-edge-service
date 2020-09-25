@@ -100,11 +100,16 @@ To achieve this mission, the teams have all received a development environment:
 
 From Fedora IOT on Raspberry PI, execute the following commands
 
+### Env Variables
+
+> SENSORHOST: FQDN or IP of Python Sensor Service ex: (sensor)
+
 ### Production
 
 ```
 podman run \
 -v /etc/machine-id:/etc/machine-id:ro \
+-e SENSORHOST=changeme \
 quay.io/acb-fr/qiot-edge-service:1-aarch64
 ```
 
