@@ -1,16 +1,20 @@
 package fr.axians.qiot.edge_service.service.sensor;
 
-import javax.inject.Inject;
-import javax.ws.rs.GET;
+
+
 import java.time.*;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.inject.Inject;
+import java.io.IOException;
 import javax.ws.rs.Produces;
+import org.jboss.logging.Logger;
 import javax.ws.rs.core.MediaType;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import fr.axians.qiot.edge_service.rest.client.registration.AppLifecycleBean;
-import com.fasterxml.jackson.databind.JsonNode;
-import org.jboss.logging.Logger;
-import java.io.IOException;
+
+
 
 @Path("/sensor")
 public class SensorResource {
@@ -19,7 +23,7 @@ public class SensorResource {
     @Inject
     @RestClient
     SensorService sensorService;
-
+    
     @Inject
     public AppLifecycleBean app;
 

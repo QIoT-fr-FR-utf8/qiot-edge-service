@@ -32,7 +32,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
-
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 
@@ -42,15 +41,6 @@ public class AppLifecycleBean {
 
     private static final Logger LOGGER = Logger.getLogger("ListenerBean");
     private Station st;
-    
-    @ConfigProperty(name = "team.name")
-    String name;
-
-    @ConfigProperty(name = "team.longitude")
-    Double longitude;
-
-    @ConfigProperty(name = "team.latitude")
-    Double latitude;
 
     @Inject
     TelemetryService tele;
@@ -59,7 +49,7 @@ public class AppLifecycleBean {
     @RestClient
     RegistrationService regService; 
 
-    @PostConstruct
+    @PostConstruct 
     void init(){
         this.st = new Station();
         LOGGER.info(this.st.toString());
@@ -77,9 +67,6 @@ public class AppLifecycleBean {
 
         //Initialize the Station information
         this.st.setSerial(content);
-        this.st.setName(name);
-        this.st.setLongitude(longitude);
-        this.st.setLatitude(latitude);
         LOGGER.info("Nom d equipe : "+this.st.getName());
 
         /* Retrieve stationId and activate the station */
