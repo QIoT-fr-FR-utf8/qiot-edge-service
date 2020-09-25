@@ -42,15 +42,6 @@ public class AppLifecycleBean {
 
     private static final Logger LOGGER = Logger.getLogger("ListenerBean");
     private Station st;
-    
-    @ConfigProperty(name = "team.name")
-    String name;
-
-    @ConfigProperty(name = "team.longitude")
-    Double longitude;
-
-    @ConfigProperty(name = "team.latitude")
-    Double latitude;
 
     @Inject
     TelemetryService tele;
@@ -65,7 +56,7 @@ public class AppLifecycleBean {
         LOGGER.info(this.st.toString());
         
         //Defined the machine-id path to be able to regester
-        java.nio.file.Path  path = Paths.get("/etc/machine-id");
+        java.nio.file.Path  path = Paths.get("/etc/test-machine-id");
         String content = null;
 
         //Get the id defined in the file
@@ -77,13 +68,10 @@ public class AppLifecycleBean {
 
         //Initialize the Station information
         this.st.setSerial(content);
-        this.st.setName(name);
-        this.st.setLongitude(longitude);
-        this.st.setLatitude(latitude);
         LOGGER.info("Nom d equipe : "+this.st.getName());
 
         /* Retrieve stationId and activate the station */
-        int stationId =0;
+        Integer stationId =0;
         stationId = regService.regStation(this.st.getSerial(), this.st.getName(), this.st.getLongitude(), this.st.getLatitude());
         this.st.setId(stationId);
         this.st.setActive(true);
@@ -127,7 +115,7 @@ public class AppLifecycleBean {
     //@GET
     //@Path("/id")
     //@Produces(MediaType.TEXT_PLAIN)
-    public int getRegistrationId(){
+    public Integer getRegistrationId(){
         return this.st.getId();
     }
 
