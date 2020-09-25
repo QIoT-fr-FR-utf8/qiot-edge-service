@@ -29,17 +29,6 @@ public abstract class Sensor implements Serializable{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Sensor)) {
-            return false;
-        }
-        Sensor sensor = (Sensor) o;
-        return stationId == sensor.stationId;
-    }
-
-    @Override
     public String toString() {
         return "{" +
             " stationId='" + getStationId() + "'" +
