@@ -49,7 +49,7 @@ public class AppLifecycleBean {
     @RestClient
     RegistrationService regService; 
 
-    @PostConstruct
+    @PostConstruct 
     void init(){
         this.st = new Station();
         LOGGER.info(this.st.toString());
