@@ -3,15 +3,15 @@ import java.io.Serializable;
 
 public abstract class Sensor implements Serializable{
     private static final long serialVersionUID = 1L;
-    protected int stationId;
+    protected Integer stationId;
 
     
 
-    public int getStationId(){
+    public Integer getStationId(){
         return this.stationId;
     }
 
-    public void setStationId(int stId){
+    public void setStationId(Integer stId){
         this.stationId = stId;
     }
 
@@ -19,11 +19,11 @@ public abstract class Sensor implements Serializable{
     public Sensor() {
     }
 
-    public Sensor(int stationId) {
+    public Sensor(Integer stationId) {
         this.stationId = stationId;
     }
 
-    public Sensor stationId(int stationId) {
+    public Sensor stationId(Integer stationId) {
         this.stationId = stationId;
         return this;
     }
