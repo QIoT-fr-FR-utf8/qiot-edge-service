@@ -16,7 +16,7 @@ public class PollutionResult extends Sensor {
     public Integer gt5_0um;
     public String instant;
     
-    public PollutionResult(int id, Integer PM10,Integer PM10_atm,Integer PM1_0,Integer PM1_0_atm,Integer PM2_5,Integer PM2_5_atm,Integer gt0_3um,Integer gt0_5um,Integer gt10um,Integer gt1_0um,Integer gt2_5um,Integer gt5_0um, String instant){
+    public PollutionResult(Integer id, Integer PM10,Integer PM10_atm,Integer PM1_0,Integer PM1_0_atm,Integer PM2_5,Integer PM2_5_atm,Integer gt0_3um,Integer gt0_5um,Integer gt10um,Integer gt1_0um,Integer gt2_5um,Integer gt5_0um, String instant){
         this.stationId = id;
         this.PM10 = PM10;
         this.PM10_atm = PM10_atm;

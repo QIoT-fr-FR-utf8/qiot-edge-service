@@ -5,6 +5,8 @@ public abstract class Sensor implements Serializable{
     private static final long serialVersionUID = 1L;
     protected Integer stationId;
 
+    
+
     public Integer getStationId(){
         return this.stationId;
     }

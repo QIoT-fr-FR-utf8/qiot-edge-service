@@ -35,7 +35,7 @@ public class SensorResource {
         OffsetDateTime now = OffsetDateTime.now( ZoneOffset.UTC );
         res = sensorService.getGasResult();
         //LOGGER.info(res.toString());
-        GasResult sensor = new GasResult(app.getRegistrationId(),(Double)res.result.get("adc"), now.toString(), (Double) res.result.get("nh3") , ( Double ) res.result.get("oxidising"), (Double)res.result.get("reducing") );
+        GasResult sensor = new GasResult((Integer)app.getRegistrationId(),(Double)res.result.get("adc"), now.toString(), (Double) res.result.get("nh3") , ( Double ) res.result.get("oxidising"), (Double)res.result.get("reducing") );
         return sensor;
     }
 
@@ -46,7 +46,7 @@ public class SensorResource {
         Result res = sensorService.getPollutionResult();
         //LOGGER.info(res.toString());
         OffsetDateTime now = OffsetDateTime.now( ZoneOffset.UTC );
-        PollutionResult sensor = new PollutionResult( app.getRegistrationId(), (Integer)res.result.get("PM10") , (Integer)res.result.get("PM10_atm") , (Integer)res.result.get("PM1_0") ,(Integer)res.result.get("PM1_0_atm") ,(Integer)res.result.get("PM2_5") ,(Integer)res.result.get("PM2_5_atm") ,(Integer) res.result.get("gt0_3um") ,(Integer) res.result.get("gt0_5um") ,(Integer) res.result.get("gt10um") ,(Integer)res.result.get("gt1_0um") ,(Integer)res.result.get("gt2_5um") ,(Integer) res.result.get("gt5_0um") ,  now.toString());
+        PollutionResult sensor = new PollutionResult( (Integer)app.getRegistrationId(), (Integer)res.result.get("PM10") , (Integer)res.result.get("PM10_atm") , (Integer)res.result.get("PM1_0") ,(Integer)res.result.get("PM1_0_atm") ,(Integer)res.result.get("PM2_5") ,(Integer)res.result.get("PM2_5_atm") ,(Integer) res.result.get("gt0_3um") ,(Integer) res.result.get("gt0_5um") ,(Integer) res.result.get("gt10um") ,(Integer)res.result.get("gt1_0um") ,(Integer)res.result.get("gt2_5um") ,(Integer) res.result.get("gt5_0um") ,  now.toString());
         return sensor;
     }
 
