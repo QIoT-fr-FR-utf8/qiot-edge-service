@@ -23,8 +23,8 @@ public interface RegistrationService {
     @Consumes(MediaType.TEXT_PLAIN)
     public Integer regStation(@PathParam("serial") String serial,
     @PathParam("name") String name,
-    @PathParam("longitude") double longitude,
-    @PathParam("latitude") double latitude);
+    @PathParam("longitude") Double longitude,
+    @PathParam("latitude") Double latitude);
 
     /* Unregistration of the station */
     @DELETE
