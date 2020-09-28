@@ -67,7 +67,7 @@ public class AppLifecycleBean {
 
         //Initialize the Station information
         this.st.setSerial(content);
-        LOGGER.info("Nom d equipe : "+this.st.getName());
+        LOGGER.info("Device name : "+this.st.getName());
 
         /* Retrieve stationId and activate the station */
         Integer stationId =0;
